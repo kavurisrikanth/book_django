@@ -1,0 +1,39 @@
+/* Custom CSS file. */
+
+@import url("https://fonts.googleapis.com/css?family=Rammetto+One");
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+.row {
+	outline: 1px solid red;
+}
+
+/*
+* {
+	outline: 1px solid red;
+} */
+
+.main_box {
+	/*align-content: center;*/
+	background-color: steelblue;
+	text-align: center;
+	font-family: Rammetto One;
+}
+
+.title_text {
+	color: white;
+}
+
+.contents_box {
+	background-color: white;
+}
+
+.one_book {
+	margin: 0.5%;
+	padding: 0.5%;
+	outline: 1px solid blue;
+}
+
+.book_row {
+	align-content: center;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viewsus Bookum!</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bookstore/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row book_title_div">
+            <h1 id="book_title">Title here</h1>
+        </div>
+        <div class="row book_image_div">
+            <div class="col-8">
+                <img id="book_image" src="http://www.placepuppy.net/1p/600/450" alt="Front Cover of book titled ">
+                <hr>
+                <p id="authors">Author(s): </p>
+                <hr>
+
+                <div class="col-12 need_flex">
+                    <form method="post" action="{% url 'bookstore:addToCart' %}">
+                        {% csrf_token %}
+                        <div class="col dropdown">
+                            Quantity:
+                            <select name="quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="col offset-6 add_to_cart">
+                            <input type="submit" value="Add to cart">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-4">
+                <p id="description">Description here</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var jsonString = "{{ jsonString }}"
+    </script>
+    <script src="{% static 'bookstore/app_json_from_py.js' %}"></script>
+</body>
+</html>
