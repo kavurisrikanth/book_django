@@ -9,37 +9,61 @@
 </head>
 <body>
     <div class="container">
-        <div class="row book_title_div">
-            <h1 id="book_title">Title here</h1>
-        </div>
+        {% include "bookstore/topbar.html" %}
+        <hr>
         <div class="row book_image_div">
+
             <div class="col-8">
-                <img id="book_image" src="http://www.placepuppy.net/1p/600/450" alt="Front Cover of book titled ">
-                <hr>
-                <p id="authors">Author(s): </p>
+                <div class="row book_title_div">
+                    <div class="col-2 offset-1">
+                        <img id="book_image" src="http://www.placepuppy.net/1p/600/450" alt="Front Cover of book titled ">
+                    </div>
+                    <div class="col-6 offset-1">
+                        <h1 id="book_title">Title here</h1>
+                    </div>
+                </div>
+
                 <hr>
 
-                <div class="col-12 need_flex">
-                    <form method="post" action="{% url 'bookstore:addToCart' %}">
-                        {% csrf_token %}
-                        <div class="col dropdown">
-                            Quantity:
-                            <select name="quantity">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                        <div class="col offset-6 add_to_cart">
-                            <input type="submit" value="Add to cart">
-                        </div>
-                    </form>
+                <div class="row need_flex" id="author_price">
+                    <div class="col align-self-start text-center" id="author_div">
+                        <p id="authors">Author(s): </p>
+                    </div>
+                    <div class="col align-self-end text-center" id="price_div">
+
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col">
+                        <p id="description">Description here</p>
+                    </div>
                 </div>
             </div>
+
             <div class="col-4">
-                <p id="description">Description here</p>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <div class="col" id="amount_div">
+                            <p>Total amount here.</p>
+                        </div>
+                        <div class="col">
+                            <form method="post" action="{% url 'bookstore:addToCart' %}" id="select_qty">
+                                {% csrf_token %}
+                                <label for="quantity_dropdown">Quantity: </label>
+                                <select name="quantity" id="quantity_dropdown">
+                                    <option value="1" selected="selected">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <input type="hidden" id="isbn_input" name="isbn_input">
+                                <input type="submit" value="Add to cart">
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

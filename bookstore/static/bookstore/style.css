@@ -5,7 +5,11 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 .row {
-	/* outline: 1px solid red; */
+	outline: 1px solid red;
+}
+
+.col {
+	outline: 1px solid black;
 }
 
 /*
@@ -31,11 +35,15 @@
 .one_book {
 	margin: 0.5%;
 	padding: 0.5%;
-	/* outline: 1px solid blue; */
+	outline: 1px solid blue;
 }
 
-.book_set .need_flex {
+.need_flex {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
+}
+
+#home_div {
+	max-height: 10%;
+	max-width: 10%;
 }

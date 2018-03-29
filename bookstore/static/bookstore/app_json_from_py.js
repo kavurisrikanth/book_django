@@ -46,12 +46,16 @@ function render_index(objs) {
 	var i = 0;
 	var currentRow = document.createElement('div');
 	var currentObj;
-	currentRow.setAttribute('class', 'col book_set');
+	currentRow.setAttribute('class', 'col-12 book_set need_flex');
 	//currentRow.setAttribute('id', ' row_' + i);
 	
 	for (i = 0; i < objs.length; i++) {
 		
 		currentObj = objs[i];
+		
+		if (!currentObj.fields.for_sale)
+			continue;
+		
 		//console.log(currentObj);
 		
 		// Multiple of 3 and not zero.
@@ -67,7 +71,7 @@ function render_index(objs) {
 		
 		// Just keep adding to the current row.
 		var currentCol = document.createElement('div');
-		currentCol.setAttribute('class', 'col one_book');
+		currentCol.setAttribute('class', 'col-3 one_book need_flex');
 		currentCol.setAttribute('id', 'book_' + i);
 		
 		var bookImgTag = document.createElement('div');
@@ -113,6 +117,40 @@ function render_book(objs) {
 	img.setAttribute('alt', img.getAttribute('alt') + '"' + onlyObj.fields.title + '"');
 	
 	var desc = document.querySelector('#description');
-	desc.innerText = onlyObj.fields.description;
+	desc.innerText = 'Description:\n' + onlyObj.fields.description;
+	
+	var author = document.querySelector('#authors');
+	author.innerText = author.innerText + ' ' + onlyObj.fields.author;
+	
+	var price = document.querySelector('#price_div');
+	price.innerHTML = '<p>Price: &#x20b9;' + onlyObj.fields.price + '</p>';
+	
+	var qty = document.querySelector('#quantity_dropdown');
+	// qty.onselect = displayAmount();
+	//qty.setAttribute('onselect', 'displayAmount()');
+	qty.setAttribute('onchange', 'displayAmount()');
+	
+	var isbnInput = document.querySelector('#isbn_input');
+	isbnInput.setAttribute('value', onlyObj.pk)
 	return;
+}
+
+
+function displayAmount() {
+	var qty = document.querySelector('#quantity_dropdown');
+	console.log(qty);
+	var value = parseInt(qty.value);
+	console.log('selected: ' + value);
+	console.log('type: ' + (typeof value));
+	
+	// Bit of a dirty fix, but it should work, since jsonString is
+	// a global variable. Also, this dropdown menu only exists on the HTML
+	// page of a single book. This means objs will have only ONE element.
+	var objs = load_objects();
+	var onlyObj = objs[0];
+	
+	var amt = document.querySelector('#amount_div');
+	var total = value * onlyObj.fields.price;
+	amt.innerHTML = '<p>&#x20b9;' + total + '</p>';
+	amt.setAttribute('style', amt.getAttribute('style') + 'display: ' + ((amt === 0) ? 'none;': 'block;'));
 }
