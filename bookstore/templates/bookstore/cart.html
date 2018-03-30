@@ -35,13 +35,30 @@
                 <!--{% endfor %}-->
             </div>
             <div class="col-4 billing_info" id="billing_info_id">
-                <h3 style="text-decoration: underline;">Billing information</h3>
-                <p>Name: Srikanth</p>
-                <p>Email: ksr@something.com</p>
-                <p>
-                    Billing Address:<br>Line one, Line two, Line three, Line four<br>
-                    Street Name, City Name, State - PIN.
-                </p>
+                <div class="col" id="payment_info_wrapper">
+                    <h3>So, payment...</h3>
+                    <div id="payment_info_div">
+                        <div class="col" id="total_amt_div">
+
+                        </div>
+                        <div class="col" id="pay_form">
+                            <form id="pay_button" method="post" action="/bookstore/payment">
+                                {% csrf_token %}
+                                <input type="hidden" id="total_payable" name="total_payable">
+                                <input type="submit" value="Pay">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3 style="text-decoration: underline;">Billing information</h3>
+                    <p>Name: Srikanth</p>
+                    <p>Email: ksr@something.com</p>
+                    <p>
+                        Billing Address:<br>Line one, Line two, Line three, Line four<br>
+                        Street Name, City Name, State - PIN.
+                    </p>
+                </div>
             </div>
             <!--{% else %}-->
             <!--<div class="col-12">-->

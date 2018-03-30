@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>And here our journey ends!</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bookstore/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        {% include "bookstore/topbar.html" %}
+        <hr>
+        <div class="row need_flex">
+            <div class="col-9">
+                {% load static %}
+                <img src="{% static 'bookstore/well-done.jpg' %}" alt="An image saying 'Well done.'">
+            </div>
+            <div class="col-3 payment_msg">
+                <h3>All right!</h3>
+                <p>
+                    Your order has been placed. Well, not really...<br>
+                    See, this website doesn't <em>actually</em> place an order. The order details are just stored
+                    in our database. You can see which non-orders you've non-placed, though.<br>
+                    <br>
+                    This website was a bit of a misdirect, wasn't it?<br>
+                    As recompense, we give you the image on the left.<br>
+                    Enjoy. :)
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -86,6 +86,10 @@ def viewCart(request):
     })
     # return HttpResponseRedirect(reverse('bookstore:index'))
 
+
+def pay(request):
+    return render(request, 'bookstore/pay.html')
+
 # Helper functions
 def insertDataIfNeeded(jsonData):
     print('Entered function')

@@ -22,6 +22,14 @@ function start() {
 	// Get the order info div. Everything is stored here.
 	var orderInfoDiv = document.querySelector('#order_info_div');
 	
+	var ordersTitleDiv = document.createElement('h2');
+	ordersTitleDiv.setAttribute('id', 'orders_title');
+	ordersTitleDiv.innerText = 'Your orders';
+	orderInfoDiv.appendChild(ordersTitleDiv);
+	
+	// The grand total amount i.e., the sum of the amounts of the books.
+	var totalAmt = 0;
+	
 	for(var i = 0; i < objs.length; i++) {
 		var currentObj = objs[i],
 			isbn = currentObj.pk;
@@ -50,16 +58,12 @@ function start() {
 		titleTag.innerText = currentObj.fields.title;
 		titlePricePart.appendChild(titleTag);
 		
+		// Calculate the total amount (for use later)
+		var total = currentObj.fields.price * cartData[isbn];
+		totalAmt += total;
+		
 		var amtTag = document.createElement('div');
-		console.log('isbn: ' + isbn + ' of type: ' + (typeof isbn));
-		console.log('price: ' + currentObj.fields.price + ', amt: ' + cartData[isbn]);
-		console.log('types: price - ' + (typeof currentObj.fields.price) + ', amt: ' + (typeof cartData[isbn]));
-		for (var key in cartData) {
-			console.log('comparing ' + key + ' and ' + isbn);
-			console.log(key === isbn);
-			console.log(key + ' -> ' + cartData[key]);
-		}
-		amtTag.innerHTML = '<h4>&#x20b9;' + (currentObj.fields.price * cartData[isbn]) + '</h4>';
+		amtTag.innerHTML = '<h4>&#x20b9;' + total + '</h4>';
 		titlePricePart.appendChild(amtTag);
 		
 		bookCard.appendChild(imgPart);
@@ -72,6 +76,25 @@ function start() {
 			orderInfoDiv.appendChild(hor);
 		}
 	}
+	
+	// Now the payment info
+	var paymentInfoDiv = document.querySelector('#total_amt_div');
+	
+	// Show the total amount
+	paymentInfoDiv.innerHTML += '<p id="amt_pre_taxes">Total (without tax): &#x20b9;' + totalAmt + '</p>';
+	
+	// Calculate tax. 10% of the total amount.
+	var tax = 0.1 * totalAmt;
+	
+	// Display the tax.
+	paymentInfoDiv.innerHTML += '<p id="taxes">Tax: &#x20b9;' + tax + '</p>';
+	
+	// Show the total payable amount.
+	paymentInfoDiv.innerHTML += '<p id="amt_pre_taxes">Total amount payable (Total + Tax): &#x20b9;' + (totalAmt + tax) + '</p>';
+	
+	// ...aaaaaaand now the pay button!
+	var formTag = document.querySelector('#total_payable');
+	formTag.setAttribute('value', (totalAmt + tax));
 }
 
 function load_objects() {
