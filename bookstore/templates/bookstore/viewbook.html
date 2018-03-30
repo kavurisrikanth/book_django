@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Viewsus Bookum!</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'bookstore/style.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Viewsus Bookum!</title>-->
+    <!--{% load static %}-->
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'bookstore/style.css' %}">-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+<!--</head>-->
+{% include "bookstore/head.html" %}
 <body>
     <div class="container">
         {% include "bookstore/topbar.html" %}
@@ -68,7 +69,8 @@
         </div>
     </div>
     <script>
-        var jsonString = "{{ jsonString }}"
+        var jsonString = "{{ jsonString }}";
+        document.querySelector('head').innerHTML += '<title>Viewsus Bookum!</title>';
     </script>
     <script src="{% static 'bookstore/app_json_from_py.js' %}"></script>
 </body>

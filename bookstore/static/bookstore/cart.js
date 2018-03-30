@@ -24,7 +24,7 @@ function start() {
 	
 	var ordersTitleDiv = document.createElement('h2');
 	ordersTitleDiv.setAttribute('id', 'orders_title');
-	ordersTitleDiv.innerText = 'Your orders';
+	ordersTitleDiv.innerText = 'Your cart splilleth over!';
 	orderInfoDiv.appendChild(ordersTitleDiv);
 	
 	// The grand total amount i.e., the sum of the amounts of the books.

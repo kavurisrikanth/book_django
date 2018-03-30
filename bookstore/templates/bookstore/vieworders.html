@@ -1,0 +1,34 @@
+{% include "bookstore/head.html" %}
+<body>
+<div class="container">
+    {% include "bookstore/topbar.html" %}
+    {% if orderDetails and bookList %}
+        <div class="row">
+            <div class="col main_heading">
+                <h1>Order details</h1>
+
+            </div>
+        </div>
+        <script>
+            var orderDetails = "{{ orderDetails }}";
+            var bookList = "{{ bookList }}"
+        </script>
+        {% load static %}
+        <script src="{% static 'bookstore/vieworder.js' %}"></script>
+    {% else %}
+        <div class="row main_title">
+            <div class="col main_heading">
+                <h1>Your orders</h1>
+            </div>
+        </div>
+        {% for order in orderHistory %}
+            <div class="row">
+                <div class="col">
+                    <h4><span id="order_{{ order.id }}_link"><a href="{% url 'bookstore:orderhistory' %}?order_id={{ order.id }}">Order #{{ order.id }}</a></span> placed on {{ order.placed_date }}</h4>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+</body>
+</html>

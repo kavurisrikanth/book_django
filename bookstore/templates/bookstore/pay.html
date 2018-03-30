@@ -1,13 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>And here our journey ends!</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'bookstore/style.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>And here our journey ends!</title>-->
+    <!--{% load static %}-->
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'bookstore/style.css' %}">-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+<!--</head>-->
+{% include "bookstore/head.html" %}
 <body>
+<script>
+    document.querySelector('head').innerHTML += '<title>And here our journey ends!</title>';
+</script>
     <div class="container">
         {% include "bookstore/topbar.html" %}
         <hr>
@@ -21,7 +25,7 @@
                 <p>
                     Your order has been placed. Well, not really...<br>
                     See, this website doesn't <em>actually</em> place an order. The order details are just stored
-                    in our database. You can see which non-orders you've non-placed, though.<br>
+                    in our database. You can see all the non-orders you've not placed <a href="{% url 'bookstore:orderhistory' %}">here</a>, though.<br>
                     <br>
                     This website was a bit of a misdirect, wasn't it?<br>
                     As recompense, we give you the image on the left.<br>

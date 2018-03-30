@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Your Cart</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'bookstore/style.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Your Cart</title>-->
+    <!--{% load static %}-->
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'bookstore/style.css' %}">-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+<!--</head>-->
+{% include "bookstore/head.html" %}
 <body>
     <div class="container">
         {% include "bookstore/topbar.html" %}
@@ -45,7 +46,7 @@
                             <form id="pay_button" method="post" action="/bookstore/payment">
                                 {% csrf_token %}
                                 <input type="hidden" id="total_payable" name="total_payable">
-                                <input type="submit" value="Pay">
+                                <input type="submit" value="Place Order and Pay">
                             </form>
                         </div>
                     </div>
@@ -68,8 +69,9 @@
         </div>
     </div>
 <script>
-    var jsonString = "{{ jsonString }}"
-    var cartDataStr = "{{ cartData }}"
+    var jsonString = "{{ jsonString }}";
+    var cartDataStr = "{{ cartData }}";
+    document.querySelector('head').innerHTML += '<title>Your cart</title>';
 </script>
 <script src="{% static 'bookstore/cart.js' %}"></script>
 </body>

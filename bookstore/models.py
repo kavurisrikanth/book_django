@@ -18,3 +18,15 @@ class Book(models.Model):
 #
 #     class Meta:
 #         ordering = ['name']
+
+class BookInstance(models.Model):
+    """
+    Model representing a specific copy of a book (i.e. that can be borrowed from the library).
+    """
+    isbn = models.ForeignKey(Book, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    order = models.ForeignKey('Order', on_delete=models.CASCADE, default=None)
+
+class Order(models.Model):
+    placed_date = models.DateTimeField('date placed')
+    total_amount = models.FloatField(default=0.0)

@@ -1,14 +1,18 @@
 from django.shortcuts import render
 import os, json, datetime
 from django.conf import settings
-from .models import Book
+from .models import Book, BookInstance, Order
 from django.core import serializers
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 
 # Create your views here.
+
 def index(request):
+    return HttpResponseRedirect(reverse('bookstore:home'))
+
+def home(request):
     with open(os.path.join(settings.STATIC_ROOT, 'bookstore/books.json')) as jsonFile:
         jsonData = json.load(jsonFile)
 
@@ -16,22 +20,13 @@ def index(request):
 
     jsonStr = serializers.serialize('json', Book.objects.all())
 
-    # jsonData = serializers.deserialize('json', jsonStr)
-    # for bookData in jsonData:
-    #     authorList = bookData.author
-    #     authorNames = []
-    #     for authorId in authorList:
-    #         authorNames.append(Author.objects.get(id=authorId))
-    #     bookData.author = authorNames
-    # jsonStr = serializers.serialize('json', jsonData)
-
     print (jsonStr)
     # print(type(jsonStr))
 
     context = {
         'jsonString': jsonStr
     }
-    return render(request, 'bookstore/index.html', context)
+    return render(request, 'bookstore/home.html', context)
 	# return HttpResponse('Welcome to the index page of the bookstore!')
 
 
@@ -81,7 +76,7 @@ def addToCart(request):
 
 
 def viewCart(request):
-    import json
+    # import json
 
     cartContents = request.session.get('cartContents', {})
     # cartData = serializers.serialize('json', [])
@@ -101,7 +96,41 @@ def viewCart(request):
 
 
 def pay(request):
+    cartContents = request.session.get('cartContents', {})
+    if cartContents:
+        totalAmt = 0
+        newOrder = Order(placed_date=datetime.datetime.now())
+        newOrder.save()
+        for isbn in cartContents.keys():
+            quantity = cartContents[isbn]
+            newBookInstance = BookInstance(isbn=Book.objects.get(pk=isbn), quantity=quantity, order=newOrder)
+            newBookInstance.save()
+            totalAmt += (quantity * Book.objects.get(pk=isbn).price)
+
+        newOrder.total_amount = totalAmt
+        newOrder.save()
     return render(request, 'bookstore/pay.html')
+
+
+def orderHistory(request):
+    try:
+        orderId = request.GET['order_id']
+        thisOrder = Order.objects.get(id=orderId)
+
+        bookList = []
+        for bookObj in thisOrder.bookinstance_set.all():
+            # print('isbn: ' + bookObj.isbn)
+            bookList.append(bookObj.isbn)
+        context = {
+            'orderDetails': serializers.serialize('json', [thisOrder,]),
+            'bookList': serializers.serialize('json', bookList)
+        }
+        return render(request, 'bookstore/vieworders.html', context)
+    except KeyError:
+        context = {
+            'orderHistory': Order.objects.all()
+        }
+        return render(request, 'bookstore/vieworders.html', context)
 
 # Helper functions
 def insertDataIfNeeded(jsonData):
@@ -213,15 +242,17 @@ def checkBookData(bookFromDB, jsonBookData):
 '''
 Check if this list of authors is present in the Author table.
 If any one isn't, then insert it.
+
+Scrapped.
 '''
-def checkAuthorData(authorList):
-    for authorName in authorList:
-        try:
-            print('Looking for author named ' + authorName)
-            Author.objects.get(name=authorName)
-            print('Author exists')
-        except Author.DoesNotExist:
-            print('Author named ' + authorName + ' does not exist')
-            newAuthor = Author(name=authorName)
-            newAuthor.save()
-            print('added new author named ' + authorName)
+# def checkAuthorData(authorList):
+#     for authorName in authorList:
+#         try:
+#             print('Looking for author named ' + authorName)
+#             Author.objects.get(name=authorName)
+#             print('Author exists')
+#         except Author.DoesNotExist:
+#             print('Author named ' + authorName + ' does not exist')
+#             newAuthor = Author(name=authorName)
+#             newAuthor.save()
+#             print('added new author named ' + authorName)
