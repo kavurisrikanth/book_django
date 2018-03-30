@@ -68,18 +68,21 @@ def addToCart(request):
 
 
 def viewCart(request):
+    import json
+
     cartContents = request.session.get('cartContents', {})
     # cartData = serializers.serialize('json', [])
     jsonStr = ''
     if cartContents:
         bookData = []
         for isbn in cartContents.keys():
+            # isbn = (key.split('_'))[1]
             bookData.append(Book.objects.get(pk=isbn))
         jsonStr = serializers.serialize('json', bookData)
 
     return render(request, 'bookstore/cart.html', {
         'jsonString': jsonStr,
-        'cartData': cartContents
+        'cartData': json.dumps(cartContents)
     })
     # return HttpResponseRedirect(reverse('bookstore:index'))
 
