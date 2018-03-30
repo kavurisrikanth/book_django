@@ -17,6 +17,11 @@
     <div class="container-fluid">
         {% include "bookstore/topbar.html" %}
         <br>
+        {% if messages %}
+            {% for msg in messages %}
+               <h4>{{ msg }}</h4>
+            {% endfor %}
+        {% endif %}
         <div class="row justify-content-center books_box">
 
         </div>

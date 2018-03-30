@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d4d939b-c76f-42cd-a6bc-371148da38c9" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/bookstore/templates/bookstore/pay.html" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/bookstore/static/bookstore/cart.js" afterPath="$PROJECT_DIR$/bookstore/static/bookstore/cart.js" />
-      <change beforePath="$PROJECT_DIR$/bookstore/templates/bookstore/cart.html" afterPath="$PROJECT_DIR$/bookstore/templates/bookstore/cart.html" />
-      <change beforePath="$PROJECT_DIR$/bookstore/urls.py" afterPath="$PROJECT_DIR$/bookstore/urls.py" />
+      <change beforePath="$PROJECT_DIR$/bookstore/templates/bookstore/index.html" afterPath="$PROJECT_DIR$/bookstore/templates/bookstore/index.html" />
       <change beforePath="$PROJECT_DIR$/bookstore/views.py" afterPath="$PROJECT_DIR$/bookstore/views.py" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +18,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="90" column="46" lean-forward="false" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
+            <state relative-caret-position="671">
+              <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -30,10 +27,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pay.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pay.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/templates/bookstore/pay.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
+            <state relative-caret-position="324">
               <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
               <folding />
             </state>
@@ -83,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bookstore/templates/bookstore/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="45" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="45" />
+            <state relative-caret-position="378">
+              <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -118,7 +115,7 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wpproject/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
+            <state relative-caret-position="590">
               <caret line="42" column="10" lean-forward="false" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
               <folding />
             </state>
@@ -154,21 +151,20 @@
         <option value="$PROJECT_DIR$/wpproject/settings.py" />
         <option value="$PROJECT_DIR$/bookstore/forms.py" />
         <option value="$PROJECT_DIR$/bookstore/templates/topbar.html" />
-        <option value="$PROJECT_DIR$/bookstore/templates/bookstore/index.html" />
         <option value="$PROJECT_DIR$/bookstore/templates/bookstore/viewbook.html" />
         <option value="$PROJECT_DIR$/bookstore/templates/bookstore/topbar.html" />
         <option value="$PROJECT_DIR$/bookstore/urls.py" />
-        <option value="$PROJECT_DIR$/bookstore/views.py" />
         <option value="$PROJECT_DIR$/bookstore/templates/bookstore/cart.html" />
         <option value="$PROJECT_DIR$/bookstore/templates/bookstore/pay.html" />
+        <option value="$PROJECT_DIR$/bookstore/views.py" />
+        <option value="$PROJECT_DIR$/bookstore/templates/bookstore/index.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="665" />
-    <option name="y" value="520" />
     <option name="width" value="1262" />
-    <option name="height" value="527" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -307,7 +303,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="665" y="520" width="1262" height="527" extended-state="0" />
+    <frame x="665" y="0" width="1262" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2046549" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -673,14 +669,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wpproject/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="42" column="10" lean-forward="false" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -694,14 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/templates/bookstore/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="45" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -720,16 +700,6 @@
           <caret line="9" column="47" lean-forward="false" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="90" column="46" lean-forward="false" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -755,8 +725,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/templates/bookstore/pay.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
+        <state relative-caret-position="324">
           <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wpproject/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="42" column="10" lean-forward="false" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/templates/bookstore/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
           <folding />
         </state>
       </provider>

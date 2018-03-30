@@ -48,6 +48,8 @@ def viewBook(request):
 
 
 def addToCart(request):
+    from django.contrib import messages
+
     # Get the current cart contents from the session
 
     print('\n\n')
@@ -58,11 +60,22 @@ def addToCart(request):
     selectedIsbn = request.POST['isbn_input']
     selectedQuantity = int(request.POST['quantity'])
 
+
     if selectedIsbn not in cartContents:
         cartContents[selectedIsbn] = 0
-    cartContents[selectedIsbn] += selectedQuantity
-    request.session['cartContents'] = cartContents
-    request.session.modified = True
+
+    errorMsg = ''
+    if cartContents[selectedIsbn] + selectedQuantity <= 3:
+        cartContents[selectedIsbn] += selectedQuantity
+        request.session['cartContents'] = cartContents
+        request.session.modified = True
+        copy = 'copies' if cartContents[selectedIsbn] > 1 else 'copy'
+        has = 'have' if cartContents[selectedIsbn] > 1 else 'has'
+        successMsg = str(cartContents[selectedIsbn]) + ' ' + copy + ' of "' + Book.objects.get(pk=selectedIsbn).title + '" ' + has + ' been added to your cart.'
+        messages.success(request, successMsg)
+    else:
+        errorMsg = 'You may only add a maximum of 3 copies of each book to your cart.'
+        messages.error(request, errorMsg)
 
     return HttpResponseRedirect(reverse('bookstore:index'))
 
