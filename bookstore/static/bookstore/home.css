@@ -1,0 +1,13 @@
+.one_book {
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	border-radius: 4px;
+	margin: 1%;
+	box-shadow: 5% 2.5% black;
+}
+
+.books_box {
+	max-width: 80%;
+	border-left: 5%;
+}

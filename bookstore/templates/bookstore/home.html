@@ -15,16 +15,22 @@
 <!--</head>-->
 {% include "bookstore/head.html" %}
 <body>
-    <div class="container">
+    <div class="container-fluid">
         {% include "bookstore/topbar.html" %}
+        <script>
+            var cartSize = "{{ cartSize }}";
+        </script>
+        <script src="{% static 'bookstore/cartsize.js' %}"></script>
         <br>
         {% if messages %}
             {% for msg in messages %}
                <h4>{{ msg }}</h4>
             {% endfor %}
         {% endif %}
-        <div class="row justify-content-center books_box">
+        <div class="row justify-content-center">
+            <div class="col books_box">
 
+            </div>
         </div>
     </div>
     <script>
@@ -34,6 +40,7 @@
     </script>
     <!--<script src="{% static 'bookstore/app.js' %}"></script>-->
     <!--<script src="{% static 'bookstore/appNoJSON.js' %}"></script>-->
-    <script src="{% static 'bookstore/app_json_from_py.js' %}"></script>
+    <script src="{% static 'bookstore/home.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'bookstore/home.css' %}">
 </body>
 </html>

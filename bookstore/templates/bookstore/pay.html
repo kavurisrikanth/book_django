@@ -12,8 +12,15 @@
 <script>
     document.querySelector('head').innerHTML += '<title>And here our journey ends!</title>';
 </script>
-    <div class="container">
+    <div class="container-fluid">
         {% include "bookstore/topbar.html" %}
+
+        <!--Not needed because the cart has been emptied.-->
+        <!--<script>-->
+            <!--var cartSize = "{{ cartSize }}";-->
+        <!--</script>-->
+        <!--<script src="{% static 'bookstore/cartsize.js' %}"></script>-->
+
         <hr>
         <div class="row need_flex">
             <div class="col-9">

@@ -9,17 +9,21 @@
 <!--</head>-->
 {% include "bookstore/head.html" %}
 <body>
-    <div class="container">
+    <div class="container-fluid">
         {% include "bookstore/topbar.html" %}
+        <script>
+            var cartSize = "{{ cartSize }}";
+        </script>
+        <script src="{% static 'bookstore/cartsize.js' %}"></script>
         <hr>
-        <div class="row book_image_div">
+        <div class="row ">
 
             <div class="col-8">
-                <div class="row book_title_div">
-                    <div class="col-2 offset-1">
+                <div class="row ">
+                    <div class="col-2 offset-1 book_image_div">
                         <img id="book_image" src="http://www.placepuppy.net/1p/600/450" alt="Front Cover of book titled ">
                     </div>
-                    <div class="col-6 offset-1">
+                    <div class="col-6 offset-1 book_title_div">
                         <h1 id="book_title">Title here</h1>
                     </div>
                 </div>
@@ -27,18 +31,21 @@
                 <hr>
 
                 <div class="row need_flex" id="author_price">
-                    <div class="col align-self-start text-center" id="author_div">
-                        <p id="authors">Author(s): </p>
+                    <div class="col align-self-start text-center more_book_info" id="author_div">
+                        <label for="authors" class="more_info_label">Author(s): </label>
+                        <p id="authors"></p>
                     </div>
-                    <div class="col align-self-end text-center" id="price_div">
-
+                    <div class="col align-self-end text-center more_book_info" id="price_div">
+                        <label for="price" class="more_info_label">Price: </label>
+                        <p id="price"></p>
                     </div>
                 </div>
 
                 <hr>
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col more_book_info">
+                        <label for="description" class="more_info_label">Description:</label>
                         <p id="description">Description here</p>
                     </div>
                 </div>
@@ -53,14 +60,18 @@
                         <div class="col">
                             <form method="post" action="{% url 'bookstore:addToCart' %}" id="select_qty">
                                 {% csrf_token %}
-                                <label for="quantity_dropdown">Quantity: </label>
-                                <select name="quantity" id="quantity_dropdown">
-                                    <option value="1" selected="selected">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                                <input type="hidden" id="isbn_input" name="isbn_input">
-                                <input type="submit" value="Add to cart">
+                                <div class="col quantity_form">
+                                    <label for="quantity_dropdown">Quantity: </label>
+                                    <select name="quantity" id="quantity_dropdown">
+                                        <option value="1" selected="selected">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                                <div class="col quantity_form">
+                                    <input type="hidden" id="isbn_input" name="isbn_input">
+                                    <input type="submit" value="Add to cart">
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -72,6 +83,7 @@
         var jsonString = "{{ jsonString }}";
         document.querySelector('head').innerHTML += '<title>Viewsus Bookum!</title>';
     </script>
-    <script src="{% static 'bookstore/app_json_from_py.js' %}"></script>
+    <script src="{% static 'bookstore/home.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'bookstore/viewbook.css' %}">
 </body>
 </html>

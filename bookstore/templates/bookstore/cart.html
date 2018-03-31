@@ -9,8 +9,12 @@
 <!--</head>-->
 {% include "bookstore/head.html" %}
 <body>
-    <div class="container">
+    <div class="container-fluid">
         {% include "bookstore/topbar.html" %}
+        <script>
+            var cartSize = "{{ cartSize }}";
+        </script>
+        <script src="{% static 'bookstore/cartsize.js' %}"></script>
         <hr>
         <div class="row justify-content-end">
             <p style="color: green; text-align: right;">Note: You can't change quantities from this page. You'll need to go to the page for that book and change the quantity there. Sorry. :(</p>
@@ -36,7 +40,7 @@
                 <!--{% endfor %}-->
             </div>
             <div class="col-4 billing_info" id="billing_info_id">
-                <div class="col" id="payment_info_wrapper">
+                <div class="col" id="payment_info_wrapper" style="display:none;">
                     <h3>So, payment...</h3>
                     <div id="payment_info_div">
                         <div class="col" id="total_amt_div">

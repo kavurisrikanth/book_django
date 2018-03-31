@@ -71,7 +71,7 @@ function render_index(objs) {
 		
 		// Just keep adding to the current row.
 		var currentCol = document.createElement('div');
-		currentCol.setAttribute('class', 'col-4 one_book need_flex');
+		currentCol.setAttribute('class', 'col-3 one_book need_flex');
 		currentCol.setAttribute('id', 'book_' + i);
 		
 		var bookImgTag = document.createElement('div');
@@ -117,19 +117,19 @@ function render_book(objs) {
 	img.setAttribute('alt', img.getAttribute('alt') + '"' + onlyObj.fields.title + '"');
 	
 	var desc = document.querySelector('#description');
-	desc.innerText = 'Description:\n' + onlyObj.fields.description;
+	desc.innerText = onlyObj.fields.description;
 	
 	var author = document.querySelector('#authors');
 	author.innerText = author.innerText + ' ' + onlyObj.fields.author;
 	
-	var price = document.querySelector('#price_div');
-	price.innerHTML = '<p>Price: &#x20b9;' + onlyObj.fields.price + '</p>';
+	var price = document.querySelector('#price');
+	price.innerHTML = '<p id="price">&#x20b9;' + onlyObj.fields.price + '</p>';
 	
 	var qty = document.querySelector('#quantity_dropdown');
 	// qty.onselect = displayAmount();
 	//qty.setAttribute('onselect', 'displayAmount()');
 	var amt = document.querySelector('#amount_div');
-	amt.innerHTML = '<p>&#x20b9;' + onlyObj.fields.price + '</p>';
+	amt.innerHTML = '<p id="amount">&#x20b9;' + onlyObj.fields.price + '</p>';
 	qty.setAttribute('onchange', 'displayAmount()');
 	
 	var isbnInput = document.querySelector('#isbn_input');
@@ -153,5 +153,5 @@ function displayAmount() {
 	
 	var amt = document.querySelector('#amount_div');
 	var total = value * onlyObj.fields.price;
-	amt.innerHTML = '<p>&#x20b9;' + total + '</p>';
+	amt.innerHTML = '<p id="amount">&#x20b9;' + total + '</p>';
 }

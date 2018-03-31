@@ -1,23 +1,28 @@
 <div class="row justify-content-center main_box">
-    <div class="col-1 home_button_div img-fluid">
-        <a href="{% url 'bookstore:index' %}">
+    <div class="col-1 home_button_div link_div">
+        <a href="{% url 'bookstore:index' %}" id="home_link" class="link">
             <!--<img src="http://www.placepuppy.net/1p/100/100" id="home_img">-->
-            <button id="home_button">Home</button>
+            <!--<button id="home_button">Home</button>-->
+            Home
         </a>
     </div>
     <div class="col-9 title_div">
         <h1 class="title_text">Welcome to the Country of Books</h1>
     </div>
-    <div class="col-1 orders_button_div">
-        <a href="{% url 'bookstore:orderhistory' %}">
+    <div class="col-1 orders_button_div link_div">
+        <a href="{% url 'bookstore:orderhistory' %}" id="history_link" class="link">
             <!--<img src="http://www.placepuppy.net/1p/100/100" id="cart_img">-->
-            <button id="orders_button">Your orders</button>
+            <!--<button id="orders_button">Your orders</button>-->
+            Orders
         </a>
     </div>
-    <div class="col-1 cart_button_div">
-        <a href="{% url 'bookstore:cart' %}">
+    <div class="col-1 cart_button_div link_div">
+        <a href="{% url 'bookstore:cart' %}" id="cart_link" class="link">
             <!--<img src="http://www.placepuppy.net/1p/100/100" id="cart_img">-->
-            <button id="cart_button">Your cart</button>
+            <!--<button id="cart_button">Your cart</button>-->
+            Cart
         </a>
     </div>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bookstore/topbar.css' %}">
 </div>

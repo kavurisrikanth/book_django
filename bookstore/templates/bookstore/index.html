@@ -6,8 +6,12 @@
 <!--</head>-->
 {% include "bookstore/head.html" %}
 <body>
-    <div class="container">
+    <div class="container-fluid">
         {% include "bookstore/topbar.html" %}
+        <script>
+            var cartSize = "{{ cartSize }}";
+        </script>
+        <script src="{% static 'bookstore/cartsize.js' %}"></script>
         <br>
         <div class="row">
 

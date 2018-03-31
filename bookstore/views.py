@@ -22,9 +22,12 @@ def home(request):
 
     print (jsonStr)
     # print(type(jsonStr))
+    cartContents = request.session.get('cartContents', {})
+    cartSize = len(cartContents)
 
     context = {
-        'jsonString': jsonStr
+        'jsonString': jsonStr,
+        'cartSize': cartSize
     }
     return render(request, 'bookstore/home.html', context)
 	# return HttpResponse('Welcome to the index page of the bookstore!')
@@ -35,9 +38,12 @@ def viewBook(request):
     jsonStr = serializers.serialize('json', [Book.objects.get(pk=isbn),])
 
     print('json str: ' + jsonStr)
+    cartContents = request.session.get('cartContents', {})
+    cartSize = len(cartContents)
 
     context = {
-        'jsonString': jsonStr
+        'jsonString': jsonStr,
+        'cartSize': cartSize
     }
     return render(request, 'bookstore/viewbook.html', context)
 
@@ -90,7 +96,8 @@ def viewCart(request):
 
     return render(request, 'bookstore/cart.html', {
         'jsonString': jsonStr,
-        'cartData': json.dumps(cartContents)
+        'cartData': json.dumps(cartContents),
+        'cartSize': len(cartContents)
     })
     # return HttpResponseRedirect(reverse('bookstore:index'))
 
@@ -109,10 +116,15 @@ def pay(request):
 
         newOrder.total_amount = totalAmt
         newOrder.save()
+
+        cartContents.clear()
+        request.session['cartContents'] = cartContents
+        request.session.modified = True
     return render(request, 'bookstore/pay.html')
 
 
 def orderHistory(request):
+    cartContents = request.session.get('cartContents', {})
     try:
         orderId = request.GET['order_id']
         thisOrder = Order.objects.get(id=orderId)
@@ -123,12 +135,14 @@ def orderHistory(request):
             bookList.append(bookObj.isbn)
         context = {
             'orderDetails': serializers.serialize('json', [thisOrder,]),
-            'bookList': serializers.serialize('json', bookList)
+            'bookList': serializers.serialize('json', bookList),
+            'cartSize': len(cartContents)
         }
         return render(request, 'bookstore/vieworders.html', context)
     except KeyError:
         context = {
-            'orderHistory': Order.objects.all()
+            'orderHistory': Order.objects.all(),
+            'cartSize': len(cartContents)
         }
         return render(request, 'bookstore/vieworders.html', context)
 

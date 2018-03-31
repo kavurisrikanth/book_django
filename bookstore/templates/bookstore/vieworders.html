@@ -1,7 +1,12 @@
 {% include "bookstore/head.html" %}
 <body>
-<div class="container">
+<div class="container-fluid">
     {% include "bookstore/topbar.html" %}
+    <script>
+        var cartSize = "{{ cartSize }}";
+    </script>
+    {% load static %}
+    <script src="{% static 'bookstore/cartsize.js' %}"></script>
     {% if orderDetails and bookList %}
         <div class="row">
             <div class="col main_heading">

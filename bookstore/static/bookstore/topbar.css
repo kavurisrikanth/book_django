@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Rammetto+One");
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+.main_box {
+	align-content: center;
+	background-color: #51b1c6;
+	font-family: Montserrat;
+}
+
+.link_div {
+	margin-top: 2%;
+}
+
+.link {
+	color: black;
+}

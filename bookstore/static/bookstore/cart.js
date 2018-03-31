@@ -2,8 +2,11 @@ document.onload = start();
 
 function start() {
 	
-	if (jsonString.length === 0 || cartDataStr.length === 0)
+	if (jsonString.length === 0 || cartDataStr.length === 0) {
+		var orderInfoDiv = document.querySelector('#order_info_div');
+		orderInfoDiv.innerHTML += '<h2>Your cart is empty. Please add some books to it.</h2>'
 		return;
+	}
 	
 	// These help parse the demon string that arrives from Python.
 	// Leave them be!
@@ -29,6 +32,9 @@ function start() {
 	
 	// The grand total amount i.e., the sum of the amounts of the books.
 	var totalAmt = 0;
+	
+	var paymentWrapper = document.querySelector('#payment_info_wrapper');
+	paymentWrapper.setAttribute('style', 'display: block;');
 	
 	for(var i = 0; i < objs.length; i++) {
 		var currentObj = objs[i],

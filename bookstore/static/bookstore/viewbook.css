@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Lora');
+
+#book_image {
+	border-style: hidden;
+	border-width: 1px;
+	border-color: black;
+	border-radius: 4px;
+	margin: 5%;
+	box-shadow: 5% 2.5% black;
+}
+
+#book_title {
+	margin-top: 10%;
+	font-family: Raleway;
+}
+
+#amount {
+	font-size: x-large;
+	color: red;
+}
+
+.more_book_info {
+	font-family: Lora;
+}
+
+.more_info_label {
+	font-variant: small-caps;
+	font-size: large;
+	font-weight: bold;
+}
+
+.quantity_form {
+	padding: 5%;
+	width: 80%;
+}
